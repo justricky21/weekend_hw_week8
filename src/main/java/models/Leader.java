@@ -6,8 +6,8 @@ public class Leader extends Explorer {
     public Leader() {
     }
 
-    public Leader(String name, Specialty specialty, int yearsOfExperience, int yearsAsLeader) {
-        super(name, specialty, yearsOfExperience);
+    public Leader(String name, Specialty specialty, int yearsOfExperience, int yearsAsLeader, ITool tool) {
+        super(name, specialty, yearsOfExperience, tool);
         this.yearsAsLeader = yearsAsLeader;
     }
 

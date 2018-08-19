@@ -1,18 +1,22 @@
 package models;
 
+import java.util.List;
+
 public abstract class Explorer {
     private String name;
     private Specialty specialty;
     private int yearsOfExperience;
     private int id;
+    private ITool tool;
 
     public Explorer() {
     }
 
-    public Explorer(String name, Specialty specialty, int yearsOfExperience) {
+    public Explorer(String name, Specialty specialty, int yearsOfExperience, ITool tool) {
         this.name = name;
         this.specialty = specialty;
         this.yearsOfExperience = yearsOfExperience;
+        this.tool = tool;
     }
 
     public String getName() {
@@ -45,5 +49,17 @@ public abstract class Explorer {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String useTool(){
+        return this.tool.applyTool();
+    }
+
+    public ITool getTool() {
+        return tool;
+    }
+
+    public void setTool(ITool tool) {
+        this.tool = tool;
     }
 }

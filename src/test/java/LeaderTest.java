@@ -1,5 +1,7 @@
+import models.ITool;
 import models.Leader;
 import models.Specialty;
+import models.Tools.DivingBelt;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,10 +9,12 @@ import static org.junit.Assert.assertEquals;
 
 public class LeaderTest {
     private Leader leader;
+    private DivingBelt divingBelt;
 
     @Before
     public void before(){
-        leader = new Leader("Markus", Specialty.FORESTER, 6, 2);
+        leader = new Leader("Markus", Specialty.FORESTER, 6, 2, divingBelt);
+        divingBelt = new DivingBelt();
     }
 
     @Test
@@ -31,5 +35,15 @@ public class LeaderTest {
     @Test
     public void leaderHasYearsAsLeader(){
         assertEquals(2, leader.getYearsAsLeader());
+    }
+
+    @Test
+    public void leaderHasTool(){
+        assertEquals(divingBelt,leader.getTool());
+    }
+
+    @Test
+    public void leaderCanUseTool(){
+        assertEquals("Dive!", leader.useTool());
     }
 }
