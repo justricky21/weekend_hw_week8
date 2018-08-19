@@ -10,4 +10,12 @@ public class Leader extends Explorer {
         super(name, specialty, yearsOfExperience);
         this.yearsAsLeader = yearsAsLeader;
     }
+
+    public int getYearsAsLeader() {
+        return yearsAsLeader;
+    }
+
+    public void setYearsAsLeader(int yearsAsLeader) {
+        this.yearsAsLeader = yearsAsLeader;
+    }
 }

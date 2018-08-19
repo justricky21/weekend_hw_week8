@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Patron {
@@ -9,6 +10,8 @@ public class Patron {
 
     public Patron(String name) {
         this.name = name;
+        this.expeditions = new ArrayList<Expedition>();
+        this.currentExpedition = null;
     }
 
     public Patron() {
@@ -36,5 +39,11 @@ public class Patron {
 
     public void setCurrentExpedition(Expedition currentExpedition) {
         this.currentExpedition = currentExpedition;
+    }
+
+
+    public void addExpeditionToMyExpeditions(Expedition expedition){
+        this.expeditions.add(expedition);
+        this.setCurrentExpedition(expedition);
     }
 }

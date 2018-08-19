@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Expedition {
@@ -13,6 +14,7 @@ public class Expedition {
         this.title = title;
         this.location = location;
         this.expeditionLeader = expeditionLeader;
+        this.party = new ArrayList<Adventurer>();
     }
 
     public Expedition() {
@@ -56,5 +58,9 @@ public class Expedition {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void addAdventurerToParty(Adventurer adventurer){
+        this.party.add(adventurer);
     }
 }
