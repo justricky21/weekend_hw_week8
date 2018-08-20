@@ -2,7 +2,6 @@ import models.Expedition;
 import models.Leader;
 import models.Patron;
 import models.Specialty;
-import models.Tools.DivingBelt;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,13 +12,11 @@ public class PatronTest {
     private Patron patron;
     private Leader leader;
     private Expedition expedition;
-    private DivingBelt divingBelt;
 
     @Before
     public void before(){
-        divingBelt = new DivingBelt();
-        leader = new Leader("Markus", Specialty.FORESTER, 6, 2, divingBelt);
-        expedition = new Expedition("Seventh Sea Voyage", "Red sea", leader);
+        leader = new Leader("Markus", Specialty.FORESTER, 6, 2);
+        expedition = new Expedition("Seventh Sea Voyage", "Red sea", leader, patron);
         patron = new Patron("Elizabeth");
     }
 
@@ -37,7 +34,7 @@ public class PatronTest {
     @Test
     public void patronCanHaveCurrentExpedition(){
         patron.addExpeditionToMyExpeditions(expedition);
-        assertEquals(expedition, patron.getCurrentExpedition());
+        assertEquals(expedition, patron.getExpedition());
     }
 
 

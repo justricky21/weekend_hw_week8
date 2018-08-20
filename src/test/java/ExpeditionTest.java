@@ -1,8 +1,4 @@
-import models.Adventurer;
-import models.Expedition;
-import models.Leader;
-import models.Specialty;
-import models.Tools.DivingBelt;
+import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,20 +8,20 @@ public class ExpeditionTest {
     private Expedition expedition;
     private Leader leader;
     private Adventurer adventurer;
-    private DivingBelt divingBelt;
+    private Patron patron;
 
 
     @Before
     public void before(){
-        divingBelt = new DivingBelt();
-        adventurer = new Adventurer("Thomas", Specialty.FORESTER, 4, divingBelt);
-        leader = new Leader("Markus", Specialty.FORESTER, 6, 2, divingBelt);
-        expedition = new Expedition("Seventh Sea Voyage", "Red sea", leader);
+        patron = new Patron("Paul");
+        adventurer = new Adventurer("Thomas", Specialty.FORESTER, 4);
+        leader = new Leader("Markus", Specialty.FORESTER, 6, 2);
+        expedition = new Expedition("Seventh Sea Voyage", "Red sea", leader, patron);
     }
 
     @Test
     public void expeditionHasLeader(){
-        assertEquals(leader, expedition.getExpeditionLeader());
+        assertEquals(leader, expedition.getLeader());
     }
 
     @Test

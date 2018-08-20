@@ -1,24 +1,31 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "explorers")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Explorer {
+
     private String name;
     private Specialty specialty;
     private int yearsOfExperience;
     private int id;
-    private ITool tool;
 
     public Explorer() {
     }
 
-    public Explorer(String name, Specialty specialty, int yearsOfExperience, ITool tool) {
+    public Explorer(String name, Specialty specialty, int yearsOfExperience) {
         this.name = name;
         this.specialty = specialty;
         this.yearsOfExperience = yearsOfExperience;
-        this.tool = tool;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -27,6 +34,7 @@ public abstract class Explorer {
         this.name = name;
     }
 
+    @Enumerated(value = EnumType.STRING)
     public Specialty getSpecialty() {
         return specialty;
     }
@@ -35,6 +43,7 @@ public abstract class Explorer {
         this.specialty = specialty;
     }
 
+    @Column(name = "int")
     public int getYearsOfExperience() {
         return yearsOfExperience;
     }
@@ -43,23 +52,14 @@ public abstract class Explorer {
         this.yearsOfExperience = yearsOfExperience;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String useTool(){
-        return this.tool.applyTool();
-    }
-
-    public ITool getTool() {
-        return tool;
-    }
-
-    public void setTool(ITool tool) {
-        this.tool = tool;
     }
 }

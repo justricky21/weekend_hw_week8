@@ -1,22 +1,26 @@
 package models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "patrons")
 public class Patron {
     private String name;
     private List<Expedition> expeditions;
-    private Expedition currentExpedition;
+    private Expedition expedition;
+    private int id;
 
     public Patron(String name) {
         this.name = name;
         this.expeditions = new ArrayList<Expedition>();
-        this.currentExpedition = null;
     }
 
     public Patron() {
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -25,6 +29,7 @@ public class Patron {
         this.name = name;
     }
 
+    @OneToMany(mappedBy = "patron", fetch = FetchType.LAZY)
     public List<Expedition> getExpeditions() {
         return expeditions;
     }
@@ -33,17 +38,29 @@ public class Patron {
         this.expeditions = expeditions;
     }
 
-    public Expedition getCurrentExpedition() {
-        return currentExpedition;
+    @Column(name = "expedition")
+    public Expedition getExpedition() {
+        return expedition;
     }
 
-    public void setCurrentExpedition(Expedition currentExpedition) {
-        this.currentExpedition = currentExpedition;
+    public void setCurrentExpedition(Expedition expedition) {
+        this.expedition = expedition;
     }
 
 
     public void addExpeditionToMyExpeditions(Expedition expedition){
         this.expeditions.add(expedition);
         this.setCurrentExpedition(expedition);
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
