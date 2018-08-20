@@ -65,6 +65,10 @@ public class Expedition {
         return leader;
     }
 
+    public void setLeader(Leader leader) {
+        this.leader = leader;
+    }
+
     public void setExpeditionLeader(Leader leader) {
         this.leader = leader;
     }
@@ -93,4 +97,6 @@ public class Expedition {
     public void addAdventurerToParty(Adventurer adventurer){
         this.party.add(adventurer);
     }
+
+
 }

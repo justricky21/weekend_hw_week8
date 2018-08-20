@@ -9,8 +9,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "adventurers")
-@Inheritance(strategy = InheritanceType.JOINED)
-
 public class Adventurer extends Explorer {
     private List<Expedition> expeditions;
 

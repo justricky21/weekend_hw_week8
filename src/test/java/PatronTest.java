@@ -31,11 +31,5 @@ public class PatronTest {
         assertEquals(1, patron.getExpeditions().size());
     }
 
-    @Test
-    public void patronCanHaveCurrentExpedition(){
-        patron.addExpeditionToMyExpeditions(expedition);
-        assertEquals(expedition, patron.getExpedition());
-    }
-
 
 }

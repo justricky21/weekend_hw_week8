@@ -9,7 +9,6 @@ import java.util.List;
 public class Patron {
     private String name;
     private List<Expedition> expeditions;
-    private Expedition expedition;
     private int id;
 
     public Patron(String name) {
@@ -38,19 +37,9 @@ public class Patron {
         this.expeditions = expeditions;
     }
 
-    @Column(name = "expedition")
-    public Expedition getExpedition() {
-        return expedition;
-    }
-
-    public void setCurrentExpedition(Expedition expedition) {
-        this.expedition = expedition;
-    }
-
 
     public void addExpeditionToMyExpeditions(Expedition expedition){
         this.expeditions.add(expedition);
-        this.setCurrentExpedition(expedition);
     }
 
     @Id
